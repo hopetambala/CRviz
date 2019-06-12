@@ -1,8 +1,15 @@
+# Quickstart Guide 
 
+## Overview
+<p align="center">
+  <img src="public/quick-start-assets/general.gif">
+</p>
 
-- [Overview](#overview)
-- [CRviz basics](#crviz-basics)
-- [Data](#data)
+## Table of Contents
+- [CRviz Basics](#crviz-basics)
+- [Loading Data](#data)
+  * [Adding datasets](#Adding-datasets)
+  * [Refresh](#refresh) 
 - [Grouping](#grouping)
   * [Group By](#group-by)
   * [Then By](#then-by)
@@ -17,11 +24,16 @@
   * [Import Dataset](#import-dataset)
 
 
-## Overview
 
 ## CRviz Basics
 
-## Data
+## Loading Data
+### Adding datasets
+### Download dataset
+### Refresh
+#### Manual Refresh
+#### Automatic refresh
+ 
 ## Grouping
 ### Group By
 ### Then By
