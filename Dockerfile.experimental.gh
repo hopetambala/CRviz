@@ -12,8 +12,7 @@ RUN sed -i '2i\
 ' package.json
 
 RUN npm i npm@latest -g
-RUN npm cache clean --force
-RUN npm ci  --no-optional
+RUN npm install --no-optional
 RUN npm run build
 
 # this step will insert google analytics tracking code into the index.html file as the

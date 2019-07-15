@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import configureStore from "configure-store";
 import { QueryParseError } from 'lunr';
 
-import { setDataset, selectDatasets, selectConfiguration } from 'domain/dataset'
+import { setDataset, selectDataset, selectConfiguration } from 'domain/dataset'
 import { getError } from 'domain/error'
 import { searchDataset } from "./search-dataset-epic"
 import { 
@@ -40,24 +40,23 @@ describe("searchDatasetEpic", () => {
 
 	it("search a dataset", (done) => {
 		const query = 'uid1';
-		const ds = selectDatasets(store.getState());
+		const ds = selectDataset(store.getState(), owner);
 		const indices = getSearchIndices(store.getState());
 
-		const action$ = searchDataset({'datasets': ds, 'queryString': query, 'searchIndices': indices});
+		const action$ = searchDataset({'dataset': ds, 'queryString': query, 'searchIndices': indices});
 		store.dispatch(action$);
 
-		expect(action$.payload.results[0].uid).to.equal(data[0].uid);
-		expect(action$.payload.results[0].CRVIZ._isSearchResult).to.equal(true);
+		expect(action$.payload.results[0]).to.equal(data[0]);
 
 		done();
 	});
 
 	it("search a for a non-existent field", (done) => {
 		const query = 'fake: field';
-		const ds = selectDatasets(store.getState());
+		const ds = selectDataset(store.getState(), owner);
 		const indices = getSearchIndices(store.getState());
 
-		const action$ = searchDataset({'datasets': ds, 'queryString': query, 'searchIndices': indices});
+		const action$ = searchDataset({'dataset': ds, 'queryString': query, 'searchIndices': indices});
 		store.dispatch(action$);
 
 		expect(action$.payload.results.length).to.equal(0);
@@ -69,17 +68,16 @@ describe("searchDatasetEpic", () => {
 	it("clears a search", (done) => {
 		const query = 'uid1';
 		
-		const ds = selectDatasets(store.getState());
+		const ds = selectDataset(store.getState(), owner);
 		const indices = getSearchIndices(store.getState());
 
-		const action$ = searchDataset({'datasets': ds, 'queryString': query, 'searchIndices': indices});
+		const action$ = searchDataset({'dataset': ds, 'queryString': query, 'searchIndices': indices});
 		store.dispatch(action$);
 
-		expect(action$.payload.results[0].uid).to.equal(data[0].uid);
-		expect(action$.payload.results[0].CRVIZ._isSearchResult).to.equal(true);
+		expect(action$.payload.results[0]).to.equal(data[0]);
 
 		const clear = '';
-		const clearAction$ = searchDataset({'datasets': ds, 'queryString': clear, 'searchIndices': indices});
+		const clearAction$ = searchDataset({'dataset': ds, 'queryString': clear, 'searchIndices': indices});
 		store.dispatch(clearAction$);
 
 		expect(clearAction$.payload.results.length).to.equal(0);
