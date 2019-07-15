@@ -2,41 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.3.5](https://github.com/CyberReboot/CRviz/compare/v0.3.4...v0.3.5) (2019-06-27)
-
-
-### Bug Fixes
-
-* **deps:** update dependency snyk to v1.179.0 ([f73f7a5](https://github.com/CyberReboot/CRviz/commit/f73f7a5))
-* **deps:** update dependency snyk to v1.179.1 ([7bd125f](https://github.com/CyberReboot/CRviz/commit/7bd125f))
-* **deps:** update dependency snyk to v1.180.0 ([76c1bf1](https://github.com/CyberReboot/CRviz/commit/76c1bf1))
-* **deps:** update dependency snyk to v1.184.0 ([679e919](https://github.com/CyberReboot/CRviz/commit/679e919))
-
-
-### Features
-
-* adds ability to use JSON refs in accordance with RFC 6901 ([bfac420](https://github.com/CyberReboot/CRviz/commit/bfac420)), closes [#355](https://github.com/CyberReboot/CRviz/issues/355)
-
-
-
-### [0.3.4](https://github.com/CyberReboot/CRviz/compare/v0.3.3...v0.3.4) (2019-06-13)
-
-
-### Bug Fixes
-
-* **dark theme exit icon:** switch color to white when going into dark theme ([b7c60b2](https://github.com/CyberReboot/CRviz/commit/b7c60b2))
-* **deps:** update dependency react-beautiful-dnd to v11.0.4 ([a731dc8](https://github.com/CyberReboot/CRviz/commit/a731dc8))
-* **deps:** update dependency react-redux to v7.1.0 ([0510ec2](https://github.com/CyberReboot/CRviz/commit/0510ec2))
-* **deps:** update dependency snyk to v1.171.1 ([78db250](https://github.com/CyberReboot/CRviz/commit/78db250))
-* **deps:** update dependency snyk to v1.173.1 ([6fd56ce](https://github.com/CyberReboot/CRviz/commit/6fd56ce))
-* **deps:** update dependency snyk to v1.175.2 ([74e156e](https://github.com/CyberReboot/CRviz/commit/74e156e))
-* **deps:** update dependency snyk to v1.177.0 ([6a73140](https://github.com/CyberReboot/CRviz/commit/6a73140))
-* **deps:** update dependency snyk to v1.178.0 ([b6bf644](https://github.com/CyberReboot/CRviz/commit/b6bf644))
-* **deps:** update dependency snyk to v1.178.1 ([ffe2950](https://github.com/CyberReboot/CRviz/commit/ffe2950))
-* **viz styling:**  fix styling to touch icon container ([82534ae](https://github.com/CyberReboot/CRviz/commit/82534ae))
-
-
-
 ### [0.3.3](https://github.com/CyberReboot/CRviz/compare/v0.3.2-beta...v0.3.3) (2019-05-30)
 
 

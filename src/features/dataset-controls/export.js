@@ -1,6 +1,6 @@
 import clonedeep from "lodash.clonedeep";
 
-const getDataToExport = (datasets, keyFields, ignoredFields, controls, notes) => {
+const getDataToExport = (datasets, keyFields, ignoredFields, controls) => {
 	let exportData = {};
 
 	if(datasets)
@@ -14,9 +14,6 @@ const getDataToExport = (datasets, keyFields, ignoredFields, controls, notes) =>
 
 	if(controls)
 		exportData["controls"] = controls;
-	
-	if(notes)
-		exportData["notes"] = notes;
 
 	return exportData;
 }
