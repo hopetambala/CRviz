@@ -1,5 +1,5 @@
 import React from "react";
-
+import { path } from "ramda";
 
 //Styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ import labelStyle from './Label.module.css';
 
 ///Redux
 import { connect } from "react-redux";
+import { selectMergedConfiguration } from "domain/dataset";
 import { getPosition, getSelectedDatum } from 'domain/controls';
 import { addNote, removeNote, getNotesIndexedByHash } from 'domain/notes';
 
@@ -129,6 +130,7 @@ class TooltipControls extends React.Component {
         ))}
       </>
     );  
+
     return (
       <>
       {this.props.data &&
@@ -138,18 +140,11 @@ class TooltipControls extends React.Component {
           </div>
           {this.props.data && !this.props.data.fieldValue  &&
               <div>
-                <p><b>UID: </b>{this.props.data.uid} </p>
-                <p><b>MAC: </b>{this.props.data.mac} </p>
-                <p><b>rDNS_host: </b>{this.props.data.rDNS_host} </p>
-                <p><b>Subnet: </b>{this.props.data.subnet} </p>
-                <p><b>IP: </b>{this.props.data.IP} </p>
-                <p><b>Record Source: </b>{this.props.data.record.source} </p>
-                <p><b>Record Timestamp: </b>{this.props.data.record.timestamp} </p>
-                <p><b>Role: </b>{this.props.data.role.role} </p>
-                <p><b>rDNS_domain: </b>{this.props.data.rDNS_domain} </p>
-                <p><b>OS: </b>{this.props.data.os.os} </p>
-                <p><b>OS Confidence: </b>{this.props.data.os.confidence} </p>
-                <p><b>Vendor: </b>{this.props.data.vendor} </p>
+                {this.props.fields.map((field)=>{
+                  return(
+                    <p><b>{field.displayName}: </b>{path(field.path, this.props.data)} </p>
+                    );
+                })}
               </div>
           }
           {this.props.data && this.props.data.fieldValue &&
@@ -194,6 +189,7 @@ const mapStateToProps = (state) => {
     position: getPosition(state),
     data: getSelectedDatum(state),
     notes: getNotesIndexedByHash(state),
+    fields: selectMergedConfiguration(state).fields,
   };
 };
 
