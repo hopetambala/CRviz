@@ -1,6 +1,7 @@
+
 .tags {
   list-style: none;
-  margin: 0;
+  /*margin: 0;*/
   overflow: hidden; 
   padding: 0;
 }
@@ -59,7 +60,7 @@
   font-size: inherit;
   padding: 0;
   margin: 0;
-  width: 75px;
+  width: 50px;
   text-align: center;
 }
 .tagInput:focus {

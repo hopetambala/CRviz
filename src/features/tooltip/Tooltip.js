@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faSave, faAngleDoubleDown, faAngleDoubleUp, faAngleDoubleRight, faAngleDoubleLeft} from '@fortawesome/free-solid-svg-icons';
 import appStyle from '../../App.module.css';
 import tooltipStyle from './Tooltip.module.css';
+import labelStyle from './Label.module.css';
 
 ///Redux
 import { connect } from "react-redux";
@@ -79,7 +80,6 @@ class TooltipControls extends React.Component {
       await this.setState({note});
 
       await this.props.addNote(this.state.note);
-      //this.resetBuilder()
     } catch(error){
       alert('No search key')
     }
@@ -121,10 +121,14 @@ class TooltipControls extends React.Component {
   }
   
   render() {
-
     const showNote = this.state.showNote;
-
-
+    const Labels = ({labels}) => (
+      <>
+        {labels.map(label => (
+          <p className={labelStyle.tag} key={label}>{label}</p>
+        ))}
+      </>
+    );  
     return (
       <>
       {this.props.data &&
@@ -162,6 +166,12 @@ class TooltipControls extends React.Component {
           {showNote === true &&
           <div>
             <b><h1><input className={tooltipStyle.inputStyle} type="text" value={this.state.note.note.title} onChange={this.handleChangeTitle} placeholder="Title"/></h1></b>
+            <div className={labelStyle.tagsDiv}>
+              <ul className={labelStyle.tags}>
+                <li className={labelStyle.tag}><input className={labelStyle.tagInput} type="text" type="text" value={this.state.currentLabel} onChange={this.handleLabels} onKeyPress={this.keyPressed} placeholder={"+"}/></li>
+                <Labels labels={this.state.note.note.labels}/>
+              </ul>
+            </div>
             <p><textarea className={tooltipStyle.inputStyle} type="text" value={this.state.note.note.content} onChange={this.handleChangeContent} placeholder="Take a note..."/></p>
             <div style={{textAlign:"center"}}>
               <label className="button circular">
