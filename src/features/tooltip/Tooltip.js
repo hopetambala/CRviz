@@ -12,7 +12,7 @@ import labelStyle from './Label.module.css';
 import { connect } from "react-redux";
 import { selectMergedConfiguration } from "domain/dataset";
 import { getPosition, getSelectedDatum } from 'domain/controls';
-import { addNote, removeNote, getNotesIndexedByHash, addTag, getTags } from 'domain/notes';
+import { addNote, removeNote, getNotesIndexedByHash, addTag, removeTag, getTags } from 'domain/notes';
 
 class TooltipControls extends React.Component {
   constructor(props){
@@ -89,10 +89,9 @@ class TooltipControls extends React.Component {
       var note = {...this.state.note}
       note.id = await this.props.data.CRVIZ._SEARCH_KEY
       await this.setState({note});
-
       await this.props.addNote(this.state.note);
     } catch(error){
-      alert('No search key')
+      alert('Error in saving note')
     }
   }
 
@@ -114,7 +113,15 @@ class TooltipControls extends React.Component {
       await this.props.addTag(tag);
       await console.log(this.props.tags)
     } catch(error){
-      alert('No tag');
+      alert('Error in saving tag');
+    }
+  }
+  
+  removeTag = (tag) =>{
+    try {
+       this.props.removeTag(tag);
+    } catch(error){
+      alert('Error in removing tag');
     }
   }
 
@@ -157,7 +164,9 @@ class TooltipControls extends React.Component {
     const Tags = ({tags}) => (
       <>
         {tags.map((tag, index )=> (
-          <p className={labelStyle.tag} key={tag.id}>{tag.title}</p>
+          <div>
+            <p className={labelStyle.tag} key={tag.id}>{tag.title}</p>
+          </div>
         ))}
       </>
     );  
@@ -237,7 +246,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addNote,
   removeNote,
-  addTag
+  addTag,
+  removeTag
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(TooltipControls);

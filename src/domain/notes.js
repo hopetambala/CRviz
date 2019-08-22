@@ -16,6 +16,7 @@ const removeNote = createAction("REMOVE_NOTE");
 const toggleNotesHover = createAction("TOGGLE_NOTES_HOVER");
 const setNoteHovered = createAction("SET_HOVERED_NOTED");
 const addTag = createAction("ADD_TAG");
+const removeTag = createAction("REMOVE_TAG");
 
 // REDUCERS
 const reducer = handleActions(
@@ -74,6 +75,16 @@ const reducer = handleActions(
         tags: [...state.tags, payload]
       }
     },
+    [removeTag]: (state, { payload }) => {
+      const prunedTags = state.tags.filter(item => {
+        return item !== payload
+      })
+
+      return {
+        ...state,
+        tags: prunedTags
+      }
+    },
   },
   defaultState
 );
@@ -90,5 +101,5 @@ export default reducer;
 
 export { 
   addNote,setNotes,removeNote, getNotesIndexedByHash, getAllNotes, toggleNotesHover, getNotesHoverStatus, setNoteHovered, getNoteHoveredId,
-  addTag, getTags
+  addTag, removeTag, getTags
 };
