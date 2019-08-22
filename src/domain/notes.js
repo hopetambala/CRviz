@@ -22,6 +22,7 @@ const reducer = handleActions(
   {
     [addNote]: (state, { payload }) => {
       return {
+        ...state,
         byId: [ ...state.byId, payload.id],
         byHash: {
           ...state.byHash,
@@ -36,6 +37,7 @@ const reducer = handleActions(
       delete state.byHash[payload.id] 
       
       return {
+        ...state,
         byId: prunedIds,
         byHash: state.byHash
       }
@@ -44,10 +46,12 @@ const reducer = handleActions(
     [setNotes]: (state, { payload }) => {
       const byid = payload.byId || state.byId;
       const byhash = payload.byHash || state.byHash;
+      const tags = payload.tags || state.tags;
       return {
         ...state,
         byId: byid,
         byHash: byhash,
+        tags: tags
       }
     },
     [toggleNotesHover]: (state, { payload }) => {

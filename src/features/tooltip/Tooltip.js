@@ -122,6 +122,7 @@ class TooltipControls extends React.Component {
     if (event.key === "Enter") {
       await this.saveTag();
       var tag = {...this.state.tag};
+      tag.id = "";
       tag.title = "";
       this.setState({tag});
     }
@@ -129,10 +130,11 @@ class TooltipControls extends React.Component {
 
   componentDidUpdate = (prevProps) => {
     if (prevProps.data !== this.props.data) {
-      var note = {...this.state.note}
-      note.id = this.props.data.CRVIZ._SEARCH_KEY
-      if (note.id in this.props.notes){          
+      var note = {...this.state.note};
+      note.id = this.props.data.CRVIZ._SEARCH_KEY;
+      if (note.id in this.props.notes){  
         this.setState({
+          ...this.state,
           note: this.props.notes[note.id]
         }); 
       }
@@ -145,6 +147,13 @@ class TooltipControls extends React.Component {
   render() {
     const showNote = this.state.showNote;
     const showTags = this.state.showTags;
+
+    const filteredTags = this.props.tags.filter((tag) => {
+      if(this.props.data){
+        return tag.id === this.props.data.CRVIZ._SEARCH_KEY
+      }
+    });
+
     const Tags = ({tags}) => (
       <>
         {tags.map((tag, index )=> (
@@ -163,7 +172,7 @@ class TooltipControls extends React.Component {
           {this.props.data && !this.props.data.fieldValue  &&
               <div>
                 {this.props.fields.map((field)=>{
-                  return(
+                  return (
                     <p><b>{field.displayName}: </b>{path(field.path, this.props.data)} </p>
                     );
                 })}
@@ -203,8 +212,8 @@ class TooltipControls extends React.Component {
           <div>
             <div className={labelStyle.tagsDiv}>
               <ul className={labelStyle.tags}>
-                <input className={tooltipStyle.inputStyle} type="text" type="text" value={this.state.tag.title} onChange={this.handleTags} onKeyPress={this.keyPressed} placeholder={"Press enter to add tag..."}/>
-                {<Tags tags={this.props.tags}/>}
+                <input className={tooltipStyle.inputStyle} type="text"  value={this.state.tag.title} onChange={this.handleTags} onKeyPress={this.keyPressed} placeholder={"Press enter to add tag..."}/>
+                <Tags tags={filteredTags}/>
               </ul>
             </div>
           </div>

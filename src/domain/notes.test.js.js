@@ -38,6 +38,9 @@ describe("Notes reducer", () => {
             } 
           }
         },
+        hoverStatus:false,
+        hoveredNoteId:'',
+        tags:[]
       };
 
       expect(getAllNotes(result)).to.deep.equal(defaultState);
@@ -59,6 +62,9 @@ describe("Notes reducer", () => {
         byId:[],
         byHash: {
         },
+        hoverStatus:false,
+        hoveredNoteId:'',
+        tags:[]
       };
 
       const add_action = addNote(note);
