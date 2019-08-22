@@ -12,7 +12,7 @@ import labelStyle from './Label.module.css';
 import { connect } from "react-redux";
 import { selectMergedConfiguration } from "domain/dataset";
 import { getPosition, getSelectedDatum } from 'domain/controls';
-import { addNote, removeNote, getNotesIndexedByHash } from 'domain/notes';
+import { addNote, removeNote, getNotesIndexedByHash, addTag, getTags } from 'domain/notes';
 
 class TooltipControls extends React.Component {
   constructor(props){
@@ -26,19 +26,21 @@ class TooltipControls extends React.Component {
 
   get initialState(){
     return {
-      label:"Labels",
       height:"200px",
       width:"300px",
       position: [200,200],
-      currentLabel:"",
+      tag:{
+        id:"",
+        title:""
+      },
       note: {
         id:'',
         note:{
           title: '',
-          labels: [],
           content:""
         }
-      }
+      },
+  
     };
   }
 
@@ -64,13 +66,21 @@ class TooltipControls extends React.Component {
     this.setState({note});
   }
 
-  handleLabels = (event) => {
-    this.setState({currentLabel: event.target.value});
+  handleTags = (event) => {
+    var tag = { ...this.state.tag};
+    tag.title = event.target.value;
+    this.setState({tag});
   }
 
   toggleShowNote = () =>{
     this.setState({
       showNote: !this.state.showNote,
+    });
+  }
+
+  toggleShowTags = () =>{
+    this.setState({
+      showTags: !this.state.showTags,
     });
   }
   
@@ -97,12 +107,23 @@ class TooltipControls extends React.Component {
     }
   }
 
-  keyPressed = (event) => {
+  saveTag = async () =>{
+    try {
+      var tag = {...this.state.tag}
+      tag.id = await this.props.data.CRVIZ._SEARCH_KEY;
+      await this.props.addTag(tag);
+      await console.log(this.props.tags)
+    } catch(error){
+      alert('No tag');
+    }
+  }
+
+  keyPressed = async (event) => {
     if (event.key === "Enter") {
-      var note = {...this.state.note}
-      note.note.labels.push(this.state.currentLabel)
-      this.setState({note})
-      this.setState({currentLabel:""})
+      await this.saveTag();
+      var tag = {...this.state.tag};
+      tag.title = "";
+      this.setState({tag});
     }
   }
 
@@ -123,10 +144,11 @@ class TooltipControls extends React.Component {
   
   render() {
     const showNote = this.state.showNote;
-    const Labels = ({labels}) => (
+    const showTags = this.state.showTags;
+    const Tags = ({tags}) => (
       <>
-        {labels.map(label => (
-          <p className={labelStyle.tag} key={label}>{label}</p>
+        {tags.map((tag, index )=> (
+          <p className={labelStyle.tag} key={tag.id}>{tag.title}</p>
         ))}
       </>
     );  
@@ -158,15 +180,9 @@ class TooltipControls extends React.Component {
             </p>
           }
           
-          {showNote === true &&
+          {showNote &&
           <div>
             <b><h1><input className={tooltipStyle.inputStyle} type="text" value={this.state.note.note.title} onChange={this.handleChangeTitle} placeholder="Title"/></h1></b>
-            <div className={labelStyle.tagsDiv}>
-              <ul className={labelStyle.tags}>
-                <li className={labelStyle.tag}><input className={labelStyle.tagInput} type="text" type="text" value={this.state.currentLabel} onChange={this.handleLabels} onKeyPress={this.keyPressed} placeholder={"+"}/></li>
-                <Labels labels={this.state.note.note.labels}/>
-              </ul>
-            </div>
             <p><textarea className={tooltipStyle.inputStyle} type="text" value={this.state.note.note.content} onChange={this.handleChangeContent} placeholder="Take a note..."/></p>
             <div style={{textAlign:"center"}}>
               <label className="button circular">
@@ -175,6 +191,21 @@ class TooltipControls extends React.Component {
               <label className="button circular">
                 <FontAwesomeIcon style={{margin:"2.5px"}} icon={faTrashAlt} onClick={this.removeNote} />
               </label>
+            </div>
+          </div>
+          }
+          {!this.props.data.fieldValue  &&
+            <p className={appStyle.accordionHeader} onClick={this.toggleShowTags}>
+              Tags {!showTags && <FontAwesomeIcon icon={faAngleDoubleDown} />}{showTags && <FontAwesomeIcon  onClick={this.toggleShowTags} icon={faAngleDoubleUp} />}
+            </p>
+          }
+          {showTags &&
+          <div>
+            <div className={labelStyle.tagsDiv}>
+              <ul className={labelStyle.tags}>
+                <input className={tooltipStyle.inputStyle} type="text" type="text" value={this.state.tag.title} onChange={this.handleTags} onKeyPress={this.keyPressed} placeholder={"Press enter to add tag..."}/>
+                {<Tags tags={this.props.tags}/>}
+              </ul>
             </div>
           </div>
           }
@@ -190,12 +221,14 @@ const mapStateToProps = (state) => {
     data: getSelectedDatum(state),
     notes: getNotesIndexedByHash(state),
     fields: selectMergedConfiguration(state).fields,
+    tags: getTags(state)
   };
 };
 
 const mapDispatchToProps = {
   addNote,
   removeNote,
+  addTag
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(TooltipControls);

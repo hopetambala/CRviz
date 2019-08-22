@@ -5,7 +5,8 @@ const defaultState = {
   byHash: {
   },
   hoverStatus:false,
-  hoveredNoteId:''
+  hoveredNoteId:'',
+  tags:[]
 };
 
 // ACTIONS
@@ -14,6 +15,7 @@ const setNotes = createAction("SET_NOTE");
 const removeNote = createAction("REMOVE_NOTE");
 const toggleNotesHover = createAction("TOGGLE_NOTES_HOVER");
 const setNoteHovered = createAction("SET_HOVERED_NOTED");
+const addTag = createAction("ADD_TAG");
 
 // REDUCERS
 const reducer = handleActions(
@@ -57,10 +59,15 @@ const reducer = handleActions(
     },
     [setNoteHovered]: (state, { payload }) => {
       const hoveredNoteId = payload;
-      //alert(`${hoveredNoteId}`);
       return {
         ...state,
         hoveredNoteId: hoveredNoteId,
+      }
+    },
+    [addTag]: (state, { payload }) => {
+      return {
+        ...state,
+        tags: [...state.tags, payload]
       }
     },
   },
@@ -72,8 +79,12 @@ const getNotesIndexedByHash = (state) => state.notes.byHash;
 const getAllNotes = (state) => state.notes;
 const getNotesHoverStatus = (state) => state.notes.hoverStatus;
 const getNoteHoveredId = (state) => state.notes.hoveredNoteId;
+const getTags = (state) => state.notes.tags;
 
 
 export default reducer;
 
-export { addNote,setNotes,removeNote, getNotesIndexedByHash, getAllNotes, toggleNotesHover, getNotesHoverStatus, setNoteHovered, getNoteHoveredId};
+export { 
+  addNote,setNotes,removeNote, getNotesIndexedByHash, getAllNotes, toggleNotesHover, getNotesHoverStatus, setNoteHovered, getNoteHoveredId,
+  addTag, getTags
+};
