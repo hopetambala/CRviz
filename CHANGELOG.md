@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/CyberReboot/CRviz/compare/v0.3.11...v0.3.12) (2019-10-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @fortawesome/react-fontawesome to v0.1.5 ([d28c3c1](https://github.com/CyberReboot/CRviz/commit/d28c3c1))
+* **deps:** update dependency react-scripts to v3.1.2 ([04db49f](https://github.com/CyberReboot/CRviz/commit/04db49f))
+* **deps:** update dependency redux-observable to v1.2.0 ([c6b280f](https://github.com/CyberReboot/CRviz/commit/c6b280f))
+* **deps:** update dependency snyk to v1.227.0 ([f066f9e](https://github.com/CyberReboot/CRviz/commit/f066f9e))
+* **deps:** update dependency snyk to v1.228.2 ([8a81dc2](https://github.com/CyberReboot/CRviz/commit/8a81dc2))
+* **deps:** update dependency snyk to v1.228.3 ([560b37e](https://github.com/CyberReboot/CRviz/commit/560b37e))
+* **deps:** update dependency snyk to v1.228.5 ([89f9384](https://github.com/CyberReboot/CRviz/commit/89f9384))
+* **deps:** update dependency snyk to v1.230.2 ([31345da](https://github.com/CyberReboot/CRviz/commit/31345da))
+* **deps:** update react monorepo to v16.10.1 ([00c81fa](https://github.com/CyberReboot/CRviz/commit/00c81fa))
+
+### [0.3.11](https://github.com/CyberReboot/CRviz/compare/v0.3.10...v0.3.11) (2019-09-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency snyk to v1.222.0 ([45cfbf3](https://github.com/CyberReboot/CRviz/commit/45cfbf3))
+* **deps:** update dependency snyk to v1.223.0 ([3e06f5b](https://github.com/CyberReboot/CRviz/commit/3e06f5b))
+
+### [0.3.10](https://github.com/CyberReboot/CRviz/compare/v0.3.9...v0.3.10) (2019-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-redux to v7.1.1 ([f2f4574](https://github.com/CyberReboot/CRviz/commit/f2f4574))
+* **deps:** update dependency react-redux to v7.1.1 ([b1e3696](https://github.com/CyberReboot/CRviz/commit/b1e3696))
+* **deps:** update dependency react-spinners to v0.6.1 ([89e6de4](https://github.com/CyberReboot/CRviz/commit/89e6de4))
+* **deps:** update dependency snyk to v1.217.0 ([513a47f](https://github.com/CyberReboot/CRviz/commit/513a47f))
+* **deps:** update dependency snyk to v1.221.0 ([839b37a](https://github.com/CyberReboot/CRviz/commit/839b37a))
+* **deps:** update dependency snyk to v1.221.1 ([c5df553](https://github.com/CyberReboot/CRviz/commit/c5df553))
+* clickable area for saving/deleting icon ([bdb5f6f](https://github.com/CyberReboot/CRviz/commit/bdb5f6f))
+* makes notes panel collapsible and scrollable ([b566e74](https://github.com/CyberReboot/CRviz/commit/b566e74)), closes [#499](https://github.com/CyberReboot/CRviz/issues/499)
+
+### [0.3.10](https://github.com/CyberReboot/CRviz/compare/v0.3.9...v0.3.10) (2019-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-redux to v7.1.1 ([f2f4574](https://github.com/CyberReboot/CRviz/commit/f2f4574))
+* **deps:** update dependency react-redux to v7.1.1 ([b1e3696](https://github.com/CyberReboot/CRviz/commit/b1e3696))
+* **deps:** update dependency react-spinners to v0.6.1 ([89e6de4](https://github.com/CyberReboot/CRviz/commit/89e6de4))
+* **deps:** update dependency snyk to v1.217.0 ([513a47f](https://github.com/CyberReboot/CRviz/commit/513a47f))
+* **deps:** update dependency snyk to v1.221.0 ([839b37a](https://github.com/CyberReboot/CRviz/commit/839b37a))
+* **deps:** update dependency snyk to v1.221.1 ([c5df553](https://github.com/CyberReboot/CRviz/commit/c5df553))
+* clickable area for saving/deleting icon ([bdb5f6f](https://github.com/CyberReboot/CRviz/commit/bdb5f6f))
+* makes notes panel collapsible and scrollable ([b566e74](https://github.com/CyberReboot/CRviz/commit/b566e74)), closes [#499](https://github.com/CyberReboot/CRviz/issues/499)
+
 ### [0.3.9](https://github.com/CyberReboot/CRviz/compare/v0.3.10...v0.3.9) (2019-08-16)
 
 ### [0.3.11](https://github.com/CyberReboot/CRviz/compare/v0.3.10...v0.3.11) (2019-08-16)
