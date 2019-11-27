@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.16](https://github.com/CyberReboot/CRviz/compare/v0.3.15...v0.3.16) (2019-11-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency d3 to v5.14.2 ([59773d6](https://github.com/CyberReboot/CRviz/commit/59773d62faf6a99aa43ec3a5cb911990244265d9))
+* **deps:** update dependency react-beautiful-dnd to v12.1.0 ([9fa5f5d](https://github.com/CyberReboot/CRviz/commit/9fa5f5df5b2781f5f640c6e4ba64f9c34c795fac))
+* **deps:** update dependency react-beautiful-dnd to v12.1.1 ([a4773a5](https://github.com/CyberReboot/CRviz/commit/a4773a5ea38d8e1f6470c8b8278c160047dd7cd9))
+* **deps:** update dependency snyk to v1.247.1 ([b1b5b77](https://github.com/CyberReboot/CRviz/commit/b1b5b77b6834da579a437da7c10e27e5599fd366))
+* **deps:** update dependency snyk to v1.250.0 ([d909789](https://github.com/CyberReboot/CRviz/commit/d90978995678b28a3bdb1d5b4c3b5fb39206173b))
+* **deps:** update dependency snyk to v1.251.0 ([c6c779d](https://github.com/CyberReboot/CRviz/commit/c6c779d931eeac47b754735b2e564f7c817f9520))
+* **deps:** update react monorepo to v16.12.0 ([30ab20b](https://github.com/CyberReboot/CRviz/commit/30ab20b721318953b3c6956d48d4242de0c280ac))
+
+### [0.3.15](https://github.com/CyberReboot/CRviz/compare/v0.3.14...v0.3.15) (2019-11-08)
+
+### [0.3.14](https://github.com/CyberReboot/CRviz/compare/v0.3.13...v0.3.14) (2019-11-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-beautiful-dnd to v12 ([f457fd3](https://github.com/CyberReboot/CRviz/commit/f457fd3))
+* **deps:** update dependency react-compound-slider to v2.4.0 ([409c727](https://github.com/CyberReboot/CRviz/commit/409c727))
+* **deps:** update dependency react-modal to v3.11.1 ([5f449f9](https://github.com/CyberReboot/CRviz/commit/5f449f9))
+* **deps:** update dependency snyk to v1.239.5 ([5bf4052](https://github.com/CyberReboot/CRviz/commit/5bf4052))
+* **deps:** update dependency snyk to v1.240.0 ([31483b4](https://github.com/CyberReboot/CRviz/commit/31483b4))
+* **deps:** update dependency snyk to v1.240.2 ([0e818a0](https://github.com/CyberReboot/CRviz/commit/0e818a0))
+* **deps:** update dependency snyk to v1.240.3 ([3165839](https://github.com/CyberReboot/CRviz/commit/3165839))
+* **deps:** update dependency snyk to v1.242.0 ([62c2f5d](https://github.com/CyberReboot/CRviz/commit/62c2f5d))
+
+### [0.3.13](https://github.com/CyberReboot/CRviz/compare/v0.3.12...v0.3.13) (2019-10-24)
+
+
+### Bug Fixes
+
+* Properly resets styles on reset ([b8e12f3](https://github.com/CyberReboot/CRviz/commit/b8e12f3))
+
 ### [0.3.12](https://github.com/CyberReboot/CRviz/compare/v0.3.11...v0.3.12) (2019-10-03)
 
 
